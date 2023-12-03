@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cool">
+
+
+    <TextView
+        android:id="@+id/firstpageblurb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="108dp"
+        android:fontFamily="@font/baloo"
+        android:gravity="center"
+        android:text="@string/firstpageblurbEnglish"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/letsgobutton"
+        app:layout_constraintStart_toStartOf="@+id/schalendartextView"
+        app:layout_constraintTop_toBottomOf="@+id/schalendartextView" />
+
+    <Button
+        android:id="@+id/letsgobutton"
+        android:layout_width="191dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="190dp"
+        android:background="@drawable/roundedbutton"
+        android:fontFamily="@font/baloo"
+        android:text="Let's Go!"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstpageblurb" />
+
+    <TextView
+        android:id="@+id/schalendartextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="230dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/dancing_script_bold"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="70dp"
+        app:layout_constraintBottom_toTopOf="@+id/firstpageblurb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

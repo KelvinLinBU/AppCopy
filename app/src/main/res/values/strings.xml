@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Schalendar</string>
+    <string name="firstpageblurbEnglish">The Productivity App</string>
+    <string name="menubuttonEnglish">Menu</string>
+    <string-array name="menu_array">
+        <item>To-Do</item>
+        <item>Initialize Calendar</item>
+        <item>View Calendar</item>
+        <item>Settings</item>
+        <item>Help Center</item>
+    </string-array>
+    <string name="weatherEnglish">Current Weather</string>
+    <string name="weatherlegendEnglish">Temp, Conditions, Windspeed</string>
+    <string name="takephotoEnglish">Take Photo</string>
+    <string name="initializecalendarEnglish">Initialize!</string>
+    <string name="yourphotoEnglish">Your Photo</string>
+    <string-array name="color_options_array">
+        <item>Blue</item>
+        <item>Salmon</item>
+        <item>Yellow</item>
+        <item>Green</item>
+    </string-array>
+    <string-array name="language_options_array">
+        <item>English</item>
+        <item>French</item>
+        <item>Chinese</item>
+    </string-array>
+</resources>
