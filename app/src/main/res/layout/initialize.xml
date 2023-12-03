@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/cool">
     <Spinner
-        android:id="@+id/menuspinner"
+        android:id="@+id/menuspinnerinitialize"
         android:layout_width="131dp"
         android:layout_height="50dp"
 

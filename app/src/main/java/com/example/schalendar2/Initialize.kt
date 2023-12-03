@@ -9,8 +9,11 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.provider.MediaStore
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -18,6 +21,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 class Initialize : AppCompatActivity() {
     //Camera doesn't work!!! IDK Why
+    private fun startSpecificActivity(activityClass: Class<*>) {
+        val intent = Intent(this, activityClass)
+        startActivity(intent)
+    }
     private lateinit var imageView: ImageView
     private val CAMERA_PERMISSION_CODE = 101
     private val REQUEST_IMAGE_CAPTURE = 1
@@ -25,7 +32,35 @@ class Initialize : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.initialize)
+        val spinner: Spinner = findViewById(R.id.menuspinnerinitialize)
+        val options = resources.getStringArray(R.array.menu_array)
 
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.menu_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                // Get the selected item from the spinner
+                val selectedItem: String = options[position]
+                // Start the corresponding activity based on the selected item
+                when (selectedItem) {
+                    "Settings" -> startSpecificActivity(Settings::class.java)
+                    "To-Do" -> startSpecificActivity(ToDo::class.java)
+                    "Help Center" -> startSpecificActivity(HelpCenter::class.java)
+                    // Add more cases for other options if needed
+                }
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Handle case where nothing is selected (if necessary)
+            }
+
+        }
         imageView = findViewById(R.id.calendarimageview)
 
         findViewById<Button>(R.id.takephotobutton).setOnClickListener {

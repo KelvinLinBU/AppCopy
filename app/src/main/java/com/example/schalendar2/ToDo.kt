@@ -1,13 +1,18 @@
 package com.example.schalendar2
 
 import EventAdapter
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
@@ -18,7 +23,10 @@ class ToDo : AppCompatActivity() {
 
     private lateinit var eventAdapter: EventAdapter
     private lateinit var eventList: List<Event>
-
+    private fun startSpecificActivity(activityClass: Class<*>) {
+        val intent = Intent(this, activityClass)
+        startActivity(intent)
+    }
     fun receiveClassDetails(classDetails: Bundle) {
         val className = classDetails.getString("ClassName")
         val classLocation = classDetails.getString("ClassLocation")
@@ -41,6 +49,8 @@ class ToDo : AppCompatActivity() {
         setContentView(R.layout.todo)
 
         val spinner: Spinner = findViewById(R.id.menuspinner)
+        val options = resources.getStringArray(R.array.menu_array)
+
         ArrayAdapter.createFromResource(
             this,
             R.array.menu_array,
@@ -49,6 +59,27 @@ class ToDo : AppCompatActivity() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
         }
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                // Get the selected item from the spinner
+                val selectedItem: String = options[position]
+                // Start the corresponding activity based on the selected item
+                when (selectedItem) {
+                    "Initialize Calendar" -> startSpecificActivity(Initialize::class.java)
+                    "Settings" -> startSpecificActivity(Settings::class.java)
+                    "Help Center" -> startSpecificActivity(HelpCenter::class.java)
+                    // Add more cases for other options if needed
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Handle case where nothing is selected (if necessary)
+            }
+        }
+
+
+
 
         val recyclerView: RecyclerView = findViewById(R.id.eventrecycler_view)
 
