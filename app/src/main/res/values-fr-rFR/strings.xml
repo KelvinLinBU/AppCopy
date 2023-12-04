@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Schalendar</string>
+    <string name="firstpageblurbEnglish">L\'application de productivité</string>
+    <string name="menubuttonEnglish">Menu</string>
+    <string name="weatherEnglish">Météo actuelle</string>
+    <string name="takephotoEnglish">Prendre une photo</string>
+    <string name="takephotoEnglish">Prendre une photo</string>
+    <string name="initializecalendarEnglish">" Initialiser!"</string>
+    <string name="yourphotoEnglish">" Ta photo"</string>
+</resources>
