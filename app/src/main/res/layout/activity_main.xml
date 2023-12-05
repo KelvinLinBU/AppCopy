@@ -31,6 +31,7 @@
         android:layout_marginBottom="190dp"
         android:background="@drawable/roundedbutton"
         android:fontFamily="@font/baloo"
+        android:textColor="@color/black"
         android:text="Let's Go!"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"

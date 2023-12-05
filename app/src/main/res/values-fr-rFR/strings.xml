@@ -5,7 +5,12 @@
     <string name="menubuttonEnglish">Menu</string>
     <string name="weatherEnglish">Météo actuelle</string>
     <string name="takephotoEnglish">Prendre une photo</string>
-    <string name="takephotoEnglish">Prendre une photo</string>
+    <string name="helpcentertext">Fonctionnalités de tâches : ajoutez des événements et des recommandations météorologiques
+        Fonctionnalité d\'initialisation du calendrier : téléchargez une photo de votre calendrier et l\'application crée un calendrier
+        Afficher le calendrier : afficher le calendrier
+        Paramètres : Langue et thèmes
+    </string>
     <string name="initializecalendarEnglish">" Initialiser!"</string>
     <string name="yourphotoEnglish">" Ta photo"</string>
+    <string name="calendarview">"Afficher le calendrier"</string>
 </resources>

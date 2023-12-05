@@ -69,6 +69,7 @@ class ToDo : AppCompatActivity() {
                     "Initialize Calendar" -> startSpecificActivity(Initialize::class.java)
                     "Settings" -> startSpecificActivity(Settings::class.java)
                     "Help Center" -> startSpecificActivity(HelpCenter::class.java)
+                    "View Calendar" -> startSpecificActivity(ViewCalendar::class.java)
                     // Add more cases for other options if needed
                 }
             }
@@ -92,10 +93,10 @@ class ToDo : AppCompatActivity() {
         //val buttonAddClass: Button = findViewById(R.id.addclassbutton) //Add class button
 
         //buttonAddClass.setOnClickListener {
-          //  supportFragmentManager.beginTransaction()
-            //    .replace(R.id.fragment_container, AddClassFragment())
-              //  .addToBackStack(null)
-                //.commit()
+         //   supportFragmentManager.beginTransaction()
+           //     .replace(R.id.fragment_container, AddClassFragment())
+         //       .addToBackStack(null)
+           //     .commit()
        // }
     }
 

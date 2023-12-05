@@ -7,28 +7,16 @@
     android:background="@color/cool">
 
     <Spinner
-        android:id="@+id/menuspinnerhelpcenter"
+        android:id="@+id/menuspinnerviewcalendar"
         android:layout_width="123dp"
         android:layout_height="56dp"
+        android:textColor="@color/black"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="11dp"
         android:background="@drawable/roundedbutton"
         android:fontFamily="@font/baloo"
         android:text="Menu"
-        android:textColor="@color/black"
-        android:textSize="25dp" />
-
-    <TextView
-        android:id="@+id/helpcentertext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="108dp"
-        android:fontFamily="@font/baloo"
-        android:gravity="center"
-        android:text="@string/helpcentertext"
-        android:textColor="@color/white"
-        android:textSize="25dp" />
-
+        android:textSize="25dp"
+        />
 </LinearLayout>

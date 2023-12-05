@@ -53,6 +53,7 @@ class Initialize : AppCompatActivity() {
                     "Settings" -> startSpecificActivity(Settings::class.java)
                     "To-Do" -> startSpecificActivity(ToDo::class.java)
                     "Help Center" -> startSpecificActivity(HelpCenter::class.java)
+                    "View Calendar" -> startSpecificActivity(ViewCalendar::class.java)
                     // Add more cases for other options if needed
                 }
             }

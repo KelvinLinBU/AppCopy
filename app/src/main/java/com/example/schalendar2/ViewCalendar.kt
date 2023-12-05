@@ -9,17 +9,16 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
-class HelpCenter : AppCompatActivity() {
+class ViewCalendar : AppCompatActivity() {
     private fun startSpecificActivity(activityClass: Class<*>) {
         val intent = Intent(this, activityClass)
         startActivity(intent)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
-        setContentView(R.layout.helpcenter)
+        setContentView(R.layout.viewcalendar)
         super.onCreate(savedInstanceState)
-        val spinner: Spinner = findViewById(R.id.menuspinnerhelpcenter)
+        val spinner: Spinner = findViewById(R.id.menuspinnerviewcalendar)
         val options = resources.getStringArray(R.array.menu_array)
-
         ArrayAdapter.createFromResource(
             this,
             R.array.menu_array,
@@ -38,7 +37,7 @@ class HelpCenter : AppCompatActivity() {
                     "Initialize Calendar" -> startSpecificActivity(Initialize::class.java)
                     "Settings" -> startSpecificActivity(Settings::class.java)
                     "To-Do" -> startSpecificActivity(ToDo::class.java)
-                    "View Calendar" -> startSpecificActivity(ViewCalendar::class.java)
+                    "Help Center" -> startSpecificActivity(HelpCenter::class.java)
                     // Add more cases for other options if needed
                 }
             }
