@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cool">
+
+
+    <EditText
+        android:id="@+id/edittextclassname"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="551dp"
+        android:hint="Class Name"
+        android:inputType="text"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/timepickerclasstime"
+        app:layout_constraintTop_toBottomOf="@+id/edittextclasslocation" />
+
+    <EditText
+        android:id="@+id/edittextclasslocation"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="92dp"
+        android:hint="Class Location"
+        android:inputType="text"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/priorityspinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/timepickerclasstime"
+
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <DatePicker
+        android:id="@+id/datepickerclassdate"
+        android:layout_width="199dp"
+        android:layout_height="346dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="2dp"
+        android:background="@color/black"
+        android:calendarTextColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/savebutton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timepickerclasstime" />
+
+    <TimePicker
+        android:id="@+id/timepickerclasstime"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/datepickerclassdate"
+        app:layout_constraintEnd_toStartOf="@+id/savebutton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/priorityspinner"
+        android:layout_width="123dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="66dp"
+        android:background="@drawable/roundedbutton"
+        android:fontFamily="@font/baloo"
+        android:text="Priority"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/savebutton"
+        app:layout_constraintEnd_toEndOf="@+id/edittextclassname"
+        app:layout_constraintStart_toStartOf="@+id/edittextclassname"
+        app:layout_constraintTop_toBottomOf="@+id/edittextclasslocation" />
+
+    <Button
+        android:id="@+id/savebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="57dp"
+        android:layout_marginBottom="366dp"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/timepickerclasstime"
+        app:layout_constraintTop_toBottomOf="@+id/priorityspinner" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

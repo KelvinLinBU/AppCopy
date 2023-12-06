@@ -1,14 +1,18 @@
 package com.example.schalendar2
 
 import EventAdapter
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.DatePicker
+import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.TimePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -23,6 +27,8 @@ class ToDo : AppCompatActivity() {
 
     private lateinit var eventAdapter: EventAdapter
     private lateinit var eventList: List<Event>
+    private val REQUEST_CODE = 1
+    private lateinit var button: Button
     private fun startSpecificActivity(activityClass: Class<*>) {
         val intent = Intent(this, activityClass)
         startActivity(intent)
@@ -52,6 +58,7 @@ class ToDo : AppCompatActivity() {
         val options = resources.getStringArray(R.array.menu_array)
 
         ArrayAdapter.createFromResource(
+
             this,
             R.array.menu_array,
             android.R.layout.simple_spinner_item
@@ -90,15 +97,33 @@ class ToDo : AppCompatActivity() {
         eventAdapter = EventAdapter(eventList)
         recyclerView.adapter = eventAdapter
         findWeather()
-        //val buttonAddClass: Button = findViewById(R.id.addclassbutton) //Add class button
-
-        //buttonAddClass.setOnClickListener {
-         //   supportFragmentManager.beginTransaction()
-           //     .replace(R.id.fragment_container, AddClassFragment())
-         //       .addToBackStack(null)
-           //     .commit()
-       // }
+        val  buttonAddClass:Button = findViewById(R.id.addclassbutton)
+        buttonAddClass.setOnClickListener {
+            val intent = Intent(this, EventInfo::class.java)
+            startActivityForResult(intent, REQUEST_CODE)
+        }
     }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+
+            val className = data?.getStringExtra("CLASS_NAME")
+            val classLocation = data?.getStringExtra("CLASS_LOCATION")
+            val date = data?.getStringExtra("DATE")
+            val time = data?.getStringExtra("TIME")
+            val priority = data?.getIntExtra("PRIORITY", 1) ?: 1 // Default to 1 if no value is received
+
+            val event = Event(className.toString(), classLocation.toString(), time.toString(), priority)
+            eventList.add(event)
+
+            //recyclerView.layoutManager = LinearLayoutManager(this)
+            //eventAdapter = EventAdapter(eventList)
+            //recyclerView.adapter = eventAdapter
+            //eventAdapter.notifyDataSetChanged()
+        }
+    }
+
 
     private fun generateEventList(): List<Event> {
         val events = mutableListOf<Event>()
@@ -137,6 +162,11 @@ class ToDo : AppCompatActivity() {
         })
     }
 }
+
+private fun <Event> List<Event>.add(event: Event) {
+
+}
+
 private fun handleWeatherData(weatherData: WeatherResponse, rootView: View) {
     fun getWindDirection(degrees: Double): String {
         val directions = arrayOf("N", "NE", "E", "SE", "S", "SW", "W", "NW")

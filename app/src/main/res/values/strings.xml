@@ -10,6 +10,11 @@
         <item>Settings</item>
         <item>Help Center</item>
     </string-array>
+    <string-array name="priority_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
     <string name="weatherEnglish">Current Weather</string>
     <string name="helpcentertext">To-Do Features: Add events, and weather recommendations
         Initialize Calendar Feature: Upload photo of your calendar and the app creates a schedule
