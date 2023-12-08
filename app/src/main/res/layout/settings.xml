@@ -23,16 +23,24 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:text="TextView" />
+        android:textSize="25dp"
+        android:textColor="@color/white"
+        android:text="@string/settings"
+
+        />
 
     <Spinner
         android:id="@+id/colorspinner"
         android:layout_width="283dp"
-        android:layout_height="65dp" />
+        android:layout_height="65dp"
+        android:background="@color/white"
+        />
 
     <Spinner
+        android:layout_marginTop="20dp"
         android:id="@+id/languagespinner"
         android:layout_width="286dp"
-        android:layout_height="65dp" />
+        android:layout_height="65dp"
+        android:background="@color/white" />
 
 </LinearLayout>

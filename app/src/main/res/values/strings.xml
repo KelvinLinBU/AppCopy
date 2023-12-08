@@ -36,4 +36,5 @@
         <item>French</item>
         <item>Chinese</item>
     </string-array>
+    <string name="settings">Settings</string>
 </resources>

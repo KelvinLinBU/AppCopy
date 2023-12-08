@@ -13,4 +13,19 @@
     <string name="initializecalendarEnglish">" Initialiser!"</string>
     <string name="yourphotoEnglish">" Ta photo"</string>
     <string name="calendarview">"Afficher le calendrier"</string>
+    <string name="settings">Parametres</string>
+    <string-array name="menu_array">
+        <item>Menu</item>
+        <item>Liste des Tâches</item>
+        <item>Initialiser</item>
+        <item>Voir Le Calendrier</item>
+        <item>Paramètres</item>
+        <item>Centre D\'aide</item>
+    </string-array>
+    <string-array name="color_options_array">
+        <item>Bleu</item>
+        <item>Saumon</item>
+        <item>Jaune</item>
+        <item>Vert</item>
+    </string-array>
 </resources>

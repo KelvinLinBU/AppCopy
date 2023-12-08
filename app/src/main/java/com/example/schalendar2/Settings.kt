@@ -24,9 +24,9 @@ class Settings : AppCompatActivity() {
         ArrayAdapter.createFromResource(
             this,
             R.array.menu_array,
-            android.R.layout.simple_spinner_item
+            R.layout.spinner_list
         ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            adapter.setDropDownViewResource(R.layout.spinner_list)
             spinner.adapter = adapter
         }
 
@@ -51,19 +51,19 @@ class Settings : AppCompatActivity() {
         val colorspinner: Spinner = findViewById(R.id.colorspinner)
         ArrayAdapter.createFromResource(
             this,
-            R.array.menu_array,
-            android.R.layout.simple_spinner_item
+            R.array.color_options_array,
+            R.layout.spinner_list
         ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            adapter.setDropDownViewResource(R.layout.spinner_list)
             colorspinner.adapter = adapter
         }
         val languagespinner: Spinner = findViewById(R.id.languagespinner)
         ArrayAdapter.createFromResource(
             this,
-            R.array.menu_array,
-            android.R.layout.simple_spinner_item
+            R.array.language_options_array,
+            R.layout.spinner_list
         ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            adapter.setDropDownViewResource(R.layout.spinner_list)
             languagespinner.adapter = adapter
         }
     }
