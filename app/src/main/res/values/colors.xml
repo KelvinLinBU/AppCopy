@@ -10,7 +10,8 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="green">#0F9D58</color>
+    <color name="green">#17C26F</color>
     <color name="cool">#2DA9EC</color>
-    <color name="warm">#F1D416</color>
+    <color name="yellow">#F1D416</color>
+    <color name="salmon">#E3414E</color>
 </resources>

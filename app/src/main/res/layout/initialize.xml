@@ -5,7 +5,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cool">
+    android:background="@color/cool"
+    android:id="@+id/initialize_layout"
+    >
     <Spinner
         android:id="@+id/menuspinnerinitialize"
         android:layout_width="131dp"
