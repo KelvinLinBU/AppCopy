@@ -1,5 +1,6 @@
 package com.example.schalendar2
 
+
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -51,6 +52,10 @@ class Settings : AppCompatActivity() {
                     "Settings" -> startSpecificActivity(Settings::class.java)
                     "To-Do" -> startSpecificActivity(ToDo::class.java)
                     "View Calendar" -> startSpecificActivity(ViewCalendar::class.java)
+                    "Initialiser" -> startSpecificActivity(Initialize::class.java)
+                    "Liste des Tâches" -> startSpecificActivity(ToDo::class.java)
+                    "Centre D'aide" -> startSpecificActivity(HelpCenter::class.java)
+                    "Voir Le Calendrier" -> startSpecificActivity(ViewCalendar::class.java)
                     // Add more cases for other options if needed
                 }
             }
@@ -154,9 +159,11 @@ class Settings : AppCompatActivity() {
                 when (selectedLanguage) {
                     "English" -> {
                         // Change language to English (if applicable)
+                        LocaleManager.setLocale(resources, "en")
                     }
                     "French" -> {
                         // Change language to French (if applicable)
+                        LocaleManager.setLocale(resources, "fr")
                     }
                     // Add more cases for other language options if needed
                 }

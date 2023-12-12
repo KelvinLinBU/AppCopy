@@ -32,6 +32,7 @@
         <item>Green</item>
     </string-array>
     <string-array name="language_options_array">
+        <item>Language Options</item>
         <item>English</item>
         <item>French</item>
         <item>Chinese</item>

@@ -77,6 +77,10 @@ class ToDo : AppCompatActivity() {
                     "Settings" -> startSpecificActivity(Settings::class.java)
                     "Help Center" -> startSpecificActivity(HelpCenter::class.java)
                     "View Calendar" -> startSpecificActivity(ViewCalendar::class.java)
+                    "Initialiser" -> startSpecificActivity(Initialize::class.java)
+                    "Paramètres" -> startSpecificActivity(Settings::class.java)
+                    "Centre D'aide" -> startSpecificActivity(HelpCenter::class.java)
+                    "Voir Le Calendrier" -> startSpecificActivity(ViewCalendar::class.java)
                     // Add more cases for other options if needed
                 }
             }
