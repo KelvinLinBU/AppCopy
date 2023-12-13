@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Schalendar</string>
+    <string name="firstpageblurbEnglish">生产力应用程序</string>
+    <string name="menubuttonEnglish">选择菜单</string>
+    <string name="weatherEnglish">当前天气</string>
+    <string name="helpcentertext">待办事项功能：添加事件和天气建议 初始化日历功能：上传日历照片，应用程序创建日程表 查看日历：查看日历 设置：语言和主题</string>
+    <string name="takephotoEnglish">拍照</string>
+    <string name="initializecalendarEnglish">初始化</string>
+    <string name="yourphotoEnglish">你的照片</string>
+    <string name="calendarview">查看日历</string>
+    <string name="settings">设置</string>
+    <string-array name="color_options_array">
+        <item>蓝色的</item>
+        <item>鲑鱼色</item>
+        <item>黄色的</item>
+        <item>绿色的</item>
+    </string-array>
+    <string-array name="menu_array">
+        <item>选择菜单</item>
+        <item>去做</item>
+        <item>初始化</item>
+        <item>查看日历</item>
+        <item>设置</item>
+        <item>帮助中心</item>
+    </string-array>
+</resources>

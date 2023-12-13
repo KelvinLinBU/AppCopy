@@ -16,11 +16,7 @@
         <item>3</item>
     </string-array>
     <string name="weatherEnglish">Current Weather</string>
-    <string name="helpcentertext">To-Do Features: Add events, and weather recommendations
-        Initialize Calendar Feature: Upload photo of your calendar and the app creates a schedule
-        View Calendar: View the calendar
-        Settings: Language and themes
-    </string>
+    <string name="helpcentertext">"To-Do Features: Add events, and weather recommendations         Initialize Calendar Feature: Upload photo of your calendar and the app creates a schedule         View Calendar: View the calendar         Settings: Language and themes     "</string>
     <string name="takephotoEnglish">Take Photo</string>
     <string name="initializecalendarEnglish">Initialize!</string>
     <string name="yourphotoEnglish">Your Photo</string>

@@ -58,6 +58,10 @@ class Initialize : AppCompatActivity() {
                     "Liste des Tâches" -> startSpecificActivity(ToDo::class.java)
                     "Centre D'aide" -> startSpecificActivity(HelpCenter::class.java)
                     "Voir Le Calendrier" -> startSpecificActivity(ViewCalendar::class.java)
+                    "设置" -> startSpecificActivity(Settings::class.java)
+                    "去做" -> startSpecificActivity(ToDo::class.java)
+                    "帮助中心" -> startSpecificActivity(HelpCenter::class.java)
+                    "查看日历" -> startSpecificActivity(ViewCalendar::class.java)
                     // Add more cases for other options if needed
                 }
             }

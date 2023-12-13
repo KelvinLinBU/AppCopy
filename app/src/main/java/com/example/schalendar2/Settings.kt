@@ -56,6 +56,10 @@ class Settings : AppCompatActivity() {
                     "Liste des Tâches" -> startSpecificActivity(ToDo::class.java)
                     "Centre D'aide" -> startSpecificActivity(HelpCenter::class.java)
                     "Voir Le Calendrier" -> startSpecificActivity(ViewCalendar::class.java)
+                    "初始化" -> startSpecificActivity(Initialize::class.java)
+                    "查看日历" -> startSpecificActivity(ViewCalendar::class.java)
+                    "帮助中心" -> startSpecificActivity(HelpCenter::class.java)
+                    "去做" -> startSpecificActivity(ToDo::class.java)
                     // Add more cases for other options if needed
                 }
             }
@@ -166,6 +170,10 @@ class Settings : AppCompatActivity() {
                         LocaleManager.setLocale(resources, "fr")
                     }
                     // Add more cases for other language options if needed
+                    "Chinese" -> {
+                        // Change language to French (if applicable)
+                        LocaleManager.setLocale(resources, "zh")
+                    }
                 }
             }
 
