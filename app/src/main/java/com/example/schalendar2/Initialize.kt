@@ -53,6 +53,16 @@ class Initialize : AppCompatActivity() {
 
     private var photoName: String? = null
 
+    val galleryLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) {
+        val galleryUri = it
+        try{
+            imageView.setImageURI(galleryUri)
+        }catch(e:Exception){
+            e.printStackTrace()
+        }
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.initialize)
@@ -98,6 +108,10 @@ class Initialize : AppCompatActivity() {
 
         findViewById<Button>(R.id.takephotobutton).setOnClickListener {
             requestCameraPermission()
+        }
+
+        findViewById<Button>(R.id.choosephotobutton).setOnClickListener {
+            galleryLauncher.launch("image/*")
         }
 
     }
