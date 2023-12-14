@@ -117,7 +117,7 @@ class ToDo : AppCompatActivity() {
             val date = data?.getStringExtra("DATE")
             val time = data?.getStringExtra("TIME")
             val priority = data?.getIntExtra("PRIORITY", 1) ?: 1 // Default to 1 if no value is received
-
+            Toast.makeText(this@ToDo, time, Toast.LENGTH_SHORT).show()
             val event = Event(className.toString(), classLocation.toString(), time.toString(), priority)
             eventList.add(event)
 
