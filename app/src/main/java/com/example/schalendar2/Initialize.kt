@@ -1,13 +1,12 @@
 package com.example.schalendar2
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.provider.MediaStore
+import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -17,8 +16,21 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
+import java.io.File
+import java.security.AccessController.getContext
+import java.util.Date
+import android.content.pm.ResolveInfo
+import android.graphics.BitmapFactory
+import android.provider.ContactsContract
+import androidx.core.view.doOnLayout
+import androidx.fragment.app.Fragment
+import kotlin.math.roundToInt
+
+
 class Initialize : AppCompatActivity() {
     //Camera doesn't work!!! IDK Why
     private fun startSpecificActivity(activityClass: Class<*>) {
@@ -28,6 +40,28 @@ class Initialize : AppCompatActivity() {
     private lateinit var imageView: ImageView
     private val CAMERA_PERMISSION_CODE = 101
     private val REQUEST_IMAGE_CAPTURE = 1
+
+
+    private val takePhoto = registerForActivityResult(
+        ActivityResultContracts.TakePicture()
+    ) { didTakePhoto: Boolean ->
+        if (didTakePhoto && photoName != null) {
+            Toast.makeText(this, "Photo taken", Toast.LENGTH_SHORT).show()
+            updatePhoto(photoName)
+        }
+    }
+
+    private var photoName: String? = null
+
+    val galleryLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) {
+        val galleryUri = it
+        try{
+            imageView.setImageURI(galleryUri)
+        }catch(e:Exception){
+            e.printStackTrace()
+        }
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,6 +109,11 @@ class Initialize : AppCompatActivity() {
         findViewById<Button>(R.id.takephotobutton).setOnClickListener {
             requestCameraPermission()
         }
+
+        findViewById<Button>(R.id.choosephotobutton).setOnClickListener {
+            galleryLauncher.launch("image/*")
+        }
+
     }
 
     private val launcher: ActivityResultLauncher<Intent> = registerForActivityResult(
@@ -91,12 +130,35 @@ class Initialize : AppCompatActivity() {
         }
     }
 
+    private fun canResolveIntent(intent: Intent): Boolean {
+        val packageManager: PackageManager = this.packageManager
+        val resolvedActivity: ResolveInfo? =
+            packageManager.resolveActivity(
+                intent,
+                PackageManager.MATCH_DEFAULT_ONLY
+            )
+        return resolvedActivity != null
+    }
+
     private fun openCamera() {
-        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        /*val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         if (takePictureIntent.resolveActivity(packageManager) != null) {
             launcher.launch(takePictureIntent)
-        }
+        }*/
+
+        photoName = "IMG_${Date()}.JPG"
+        val photoFile = File(this@Initialize.applicationContext.filesDir, photoName)
+        val photoUri = FileProvider.getUriForFile(
+            this@Initialize,
+            "com.bignerdranch.android.schalendar2.fileprovider",
+            photoFile
+        )
+
+
+        takePhoto.launch(photoUri)
+
     }
+
 
     private fun requestCameraPermission() {
         if (ContextCompat.checkSelfPermission(
@@ -112,6 +174,55 @@ class Initialize : AppCompatActivity() {
         } else {
             // Permission already granted
             openCamera()
+        }
+    }
+
+    fun getScaledBitmap(path: String, destWidth: Int, destHeight: Int): Bitmap {
+        // Read in the dimensions of the image on disk
+        val options = BitmapFactory.Options()
+        options.inJustDecodeBounds = true
+        BitmapFactory.decodeFile(path, options)
+
+        val srcWidth = options.outWidth.toFloat()
+        val srcHeight = options.outHeight.toFloat()
+
+        // Figure out how much to scale down by
+        val sampleSize = if (srcHeight <= destHeight && srcWidth <= destWidth) {
+            1
+        } else {
+            val heightScale = srcHeight / destHeight
+            val widthScale = srcWidth / destWidth
+
+            minOf(heightScale, widthScale).roundToInt()
+        }
+
+        // Read in and create final bitmap
+        return BitmapFactory.decodeFile(path, BitmapFactory.Options().apply {
+            inSampleSize = sampleSize
+        })
+    }
+
+    private fun updatePhoto(photoFileName: String?) {
+        if (imageView.tag != photoFileName) {
+            val photoFile = photoFileName?.let {
+                File(this@Initialize.applicationContext.filesDir, it)
+            }
+
+            if (photoFile?.exists() == true) {
+                imageView.doOnLayout { measuredView ->
+                    val scaledBitmap = getScaledBitmap(
+                        photoFile.path,
+                        measuredView.width,
+                        measuredView.height
+                    )
+                    imageView.setImageBitmap(scaledBitmap)
+                    imageView.tag = photoFileName
+                }
+            } else {
+                Toast.makeText(this, "Photo does not exist", Toast.LENGTH_SHORT).show()
+                imageView.setImageBitmap(null)
+                imageView.tag = null
+            }
         }
     }
 

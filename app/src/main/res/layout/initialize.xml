@@ -39,17 +39,34 @@
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         />
+
+    <LinearLayout android:id="@+id/button_layout" android:orientation="horizontal"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
     <Button
         android:id="@+id/takephotobutton"
-        android:layout_width="300dp"
+        android:layout_width="150dp"
         android:layout_height="72dp"
-        android:background="@drawable/roundedbutton"
-        android:fontFamily="@font/baloo"
-        android:text="@string/takephotoEnglish"
-        android:textSize="25dp"
+        android:textSize="12dp"
         android:layout_gravity="center"
         android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_camera"
+        android:text="@string/takephotoEnglish"
         />
+
+    <Button
+        android:id="@+id/choosephotobutton"
+        android:layout_width="150dp"
+        android:layout_height="72dp"
+        android:textSize="12dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_camera"
+        android:text="@string/takephotoEnglish"
+        />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/initializeschedulebutton"
