@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="google_sign_in_client_id" translatable="false">YOUR_OAUTH_CLIENT_ID</string>
+    <string name="google_sign_in_client_id" translatable="false">64977186699-mhaq11n7lf70u6gf6t1ftf7th4tpi7fb.apps.googleusercontent.com</string>
 </resources>
