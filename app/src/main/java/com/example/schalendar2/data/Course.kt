@@ -8,13 +8,13 @@ import java.time.LocalTime
 @Entity(tableName = "course_table")
 data class Course(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
-    val name: String,
-    // 0 means course; 1 means lab; 2 means dis; 3 means oh; 4 means meeting
-    val type: Int,
-    val code: String? = null,
-    val room: String? = null,
-    val date: List<LocalDate>,
-    val start: LocalTime,
-    val end: LocalTime
+    var id: Int = 0,
+
+    var name: String = "",
+    var type: Int = 0,
+    var code: String? = null,
+    var room: String? = null,
+    var date: String = "Monday And Tuesday?" ,
+    var start: String = "",
+    var end: String = ""
 )

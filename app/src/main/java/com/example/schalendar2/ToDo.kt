@@ -8,23 +8,24 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.DatePicker
-import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
-import android.widget.TimePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
+import com.example.schalendar2.data.Course
+import com.example.schalendar2.data.CourseDataBase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class ToDo : AppCompatActivity() {
-
+    private lateinit var courseDatabase: CourseDataBase
     private lateinit var eventAdapter: EventAdapter
     private lateinit var eventList: List<Event>
     private val REQUEST_CODE = 1
@@ -57,6 +58,14 @@ class ToDo : AppCompatActivity() {
         val spinner: Spinner = findViewById(R.id.menuspinner)
         val options = resources.getStringArray(R.array.menu_array)
 
+        fun insertCourseIntoDatabase(id: Int, name:String, type: Int, code: String, room:String, data:String, start: String, end:String ) {
+            val course = Course(id,name, type, code, room, data, start, end)
+            GlobalScope.launch(Dispatchers.IO) {
+                courseDatabase.courseDao().insertCourse(course)
+                // Optionally, add a success message or perform other actions
+                // after inserting data into the database
+            }
+        }
         ArrayAdapter.createFromResource(
 
             this,
@@ -110,7 +119,19 @@ class ToDo : AppCompatActivity() {
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
+        val courseDatabase = Room.databaseBuilder(
+            applicationContext,
+            CourseDataBase::class.java,
+            "CourseDatabase"
+        ).build()
+        fun insertCourseIntoDatabase(id: Int, name:String, type: Int, code: String, room:String, data: String, start: String, end:String ) {
+            val course = Course(id,name, type, code, room, data, start, end)
+            GlobalScope.launch(Dispatchers.IO) {
+                courseDatabase.courseDao().insertCourse(course)
+                // Optionally, add a success message or perform other actions
+                // after inserting data into the database
+            }
+        }
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
 
             val className = data?.getStringExtra("CLASS_NAME")
@@ -119,14 +140,14 @@ class ToDo : AppCompatActivity() {
             val time = data?.getStringExtra("TIME")
             val priority = data?.getIntExtra("PRIORITY", 1) ?: 1 // Default to 1 if no value is received
             Toast.makeText(this@ToDo, time, Toast.LENGTH_SHORT).show()
-            val event = Event(className.toString(), classLocation.toString(), time.toString(), priority)
-            eventList.add(event)
+            insertCourseIntoDatabase(1, "Code", 1, "Hello", "Room", "Wednesdays Only", "Start", "End")
 
             //recyclerView.layoutManager = LinearLayoutManager(this)
             //eventAdapter = EventAdapter(eventList)
             //recyclerView.adapter = eventAdapter
             //eventAdapter.notifyDataSetChanged()
         }
+
     }
 
 
