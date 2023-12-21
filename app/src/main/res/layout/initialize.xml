@@ -48,10 +48,9 @@
         android:id="@+id/takephotobutton"
         android:layout_width="150dp"
         android:layout_height="72dp"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:layout_gravity="center"
         android:layout_marginBottom="20dp"
-        android:src="@drawable/ic_camera"
         android:text="@string/takephotoEnglish"
         />
 
@@ -59,11 +58,10 @@
         android:id="@+id/choosephotobutton"
         android:layout_width="150dp"
         android:layout_height="72dp"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:layout_gravity="center"
         android:layout_marginBottom="20dp"
-        android:src="@drawable/ic_camera"
-        android:text="@string/takephotoEnglish"
+        android:text="@string/choosePhotoEnglish"
         />
 
     </LinearLayout>
@@ -76,5 +74,6 @@
         android:background="@drawable/roundedbutton"
         android:fontFamily="@font/baloo"
         android:text="@string/initializecalendarEnglish"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:textColor="@color/black"/>
 </LinearLayout>

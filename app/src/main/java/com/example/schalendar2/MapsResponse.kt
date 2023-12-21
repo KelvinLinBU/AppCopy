@@ -1,6 +1,6 @@
 package com.example.schalendar2
 
-data class Result(
+data class DistanceAndTimeResponse(
     val destination_addresses: List<String>,
     val origin_addresses: List<String>,
     val rows: List<Rows>,

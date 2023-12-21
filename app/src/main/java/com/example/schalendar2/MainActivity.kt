@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val letsgobutton = findViewById<Button>(R.id.letsgobutton)
         letsgobutton.setOnClickListener{
-            val i = Intent(this, SignUpPage::class.java)
+            val i = Intent(this, ToDo::class.java)
             this.startActivity(i)
         }
     }

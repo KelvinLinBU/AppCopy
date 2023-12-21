@@ -26,8 +26,15 @@ import java.util.Date
 import android.content.pm.ResolveInfo
 import android.graphics.BitmapFactory
 import android.provider.ContactsContract
+import android.util.Log
+import android.widget.TextView
 import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import kotlin.math.roundToInt
 
 
@@ -114,6 +121,41 @@ class Initialize : AppCompatActivity() {
             galleryLauncher.launch("image/*")
         }
 
+    }
+
+    private fun getCourses(origin: String, dest: String) {
+        val api = Retrofit.Builder()
+            .baseUrl("https://maps.googleapis.com/maps/api/distancematrix/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(MapsApiService::class.java)
+
+        api.getMapData(origin, dest, "AIzaSyDEM2pDWXuh-UJXl3RxL-QXv7uEAYjY828", "walking").enqueue(object :
+            Callback<DistanceAndTimeResponse> {
+            override fun onResponse(
+                call: Call<DistanceAndTimeResponse>,
+                response: Response<DistanceAndTimeResponse>
+            ) {
+                if (response.isSuccessful && response != null){
+
+                    //findViewById<TextView>(R.id.mapDistance).text = response.body().toString()
+                    //Toast.makeText(this@MainActivity, response.body().toString(), Toast.LENGTH_SHORT).show()
+                    response.body()?.let {
+                        findViewById<TextView>(R.id.mapDistance).text =  it.rows[0].elements[0].distance.text
+                        findViewById<TextView>(R.id.mapTime).text = it.rows[0].elements[0].duration.text
+                    }
+                }
+                else {
+                    Toast.makeText(this@MapsActivity, "NUll", Toast.LENGTH_SHORT).show()
+
+                }
+            }
+
+            override fun onFailure(call: Call<DistanceAndTimeResponse>, t: Throwable) {
+                Log.i("Something", "onFailure: ${t.message}")
+            }
+
+        })
     }
 
     private val launcher: ActivityResultLauncher<Intent> = registerForActivityResult(
